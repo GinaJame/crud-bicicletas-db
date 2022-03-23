@@ -18,7 +18,8 @@ $.ajax({
     success: function(res){
         //console.log(res)
         res.bicicletas.forEach(function(bici){
-            L.marker(bici.ubicacion, title=bici.id).addTo(map);
+            let ubicacion = [bici.lat, bici.lon]
+            L.marker(ubicacion, title=bici.id).addTo(map);
         })
     }
 })
