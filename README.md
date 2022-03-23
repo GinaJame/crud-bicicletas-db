@@ -14,4 +14,3 @@ Install all the packages using
  
 Go to http://localhost:3000/ and you are done!
 
-## Structure
