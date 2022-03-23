@@ -1,11 +1,55 @@
-let Bicicleta = function(id, color, modelo, ubicacion){
-    this.id = id
-    this.color = color
-    this.modelo = modelo
-    this.ubicacion = ubicacion
+const knex = require('../database/connection');
+
+
+exports.factory = (id, color, modelo, lat, lon) => {
+    return {
+        id : id,
+        color : color,
+        modelo : modelo,
+        lat : lat,
+        lon : lon
+    }
 }
 
+exports.all = () => {
+    // Realiza la consulta dentro de knex
+    return knex
+      .select('*')
+      .from('bicicletas');
+}
 
+exports.create = (bicicleta) => {
+    return knex('bicicletas')
+    .insert({
+        id : 3,
+        color : bicicleta.color,
+        modelo : bicicleta.modelo,
+        lat: bicicleta.lat,
+        lon: bicicleta.lon
+    });
+}
+
+exports.find = (id) => {
+    return knex
+    .select('*')
+    .from('bicicletas')
+    .where('id', id)
+    .first();
+}
+
+exports.update = (id, bicicleta) => {
+    return knex('bicicletas')
+    .update(bicicleta)
+    .update('updated_at', knex.fn.now())
+    .where('id', id);
+}
+
+exports.delete = (id) => {
+    return knex('bicicletas')
+    .delete()
+    .where('id', id);
+}
+/*
 Bicicleta.prototype.toString = function(){
     return `id: ${this.id} | color: ${this.color}`
 }
@@ -34,11 +78,4 @@ Bicicleta.removeById = function(aBiciId){
         }
     }
 }
-
-let b1 = new Bicicleta(1, 'rojo', 'BMX', [19.2855104,-99.1329263])
-let b2 = new Bicicleta(2, 'negra', 'ruta', [19.2847256,-99.1372607])
-
-Bicicleta.add(b1)
-Bicicleta.add(b2)
-
-module.exports = Bicicleta
+*/
