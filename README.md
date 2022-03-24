@@ -13,4 +13,10 @@ Install all the packages using
  ` npm start `
  
 Go to http://localhost:3000/ and you are done!
+You could get an error because you need to install @vscode/sqlite3, in that case, just do:
+` npm install @vscode/sqlite3`
+
+
+## Demo:
+https://drive.google.com/file/d/1egnkGJHQSRHTTDhpA8MMD0kTug2vTwVV/view?usp=sharing
 
